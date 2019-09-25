@@ -39,7 +39,7 @@ public class welcome extends javax.swing.JFrame {
             PreparedStatement pstm = conn.prepareStatement(sql);
             ResultSet rs = pstm.executeQuery();
             
-            DefaultTableModel tbl1 = (DefaultTableModel)prodtable.getModel();
+            DefaultTableModel tbl1 = (DefaultTableModel)prodtables.getModel();
             tbl1.setRowCount(0);
             while(rs.next()){
                 tbl1.addRow(new Object[]{rs.getInt("ID"),rs.getString("PRODUCT_NAME"),rs.getInt("QUANTITY"),rs.getString("PRICE")});
@@ -73,7 +73,7 @@ public class welcome extends javax.swing.JFrame {
         txt = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        prodtable = new javax.swing.JTable();
+        prodtables = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
@@ -170,7 +170,7 @@ public class welcome extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(0, 51, 51));
 
-        prodtable.setModel(new javax.swing.table.DefaultTableModel(
+        prodtables.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -181,7 +181,7 @@ public class welcome extends javax.swing.JFrame {
                 "ID", "PRODUCT NAME", "QUANTITY", "PRICE"
             }
         ));
-        jScrollPane1.setViewportView(prodtable);
+        jScrollPane1.setViewportView(prodtables);
 
         jButton1.setText("ADD");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -310,7 +310,7 @@ if(marie==1){
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JFormattedTextField pc;
     private javax.swing.JTextField pdnm;
-    private javax.swing.JTable prodtable;
+    private javax.swing.JTable prodtables;
     private javax.swing.JSpinner qt;
     private javax.swing.JLabel txt;
     // End of variables declaration//GEN-END:variables
