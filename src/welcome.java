@@ -300,7 +300,7 @@ if(marie==1){
                     } catch (SQLException ex) {
                         Logger.getLogger(welcome.class.getName()).log(Level.SEVERE, null, ex);
                     }
-                    JOptionPane.showMessageDialog(prodtables, "Product" + name + "DELETED");
+                    JOptionPane.showMessageDialog(prodtables, " Product " + name + "DELETED");
                     
                 } else{
                     
