@@ -68,8 +68,10 @@ public class welcome extends javax.swing.JFrame {
         pdnm = new javax.swing.JTextField();
         qt = new javax.swing.JSpinner();
         pc = new javax.swing.JFormattedTextField();
-        jButton3 = new javax.swing.JButton();
+        adbtn = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        svbtn = new javax.swing.JButton();
+        prdid = new javax.swing.JLabel();
         txt = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -77,6 +79,7 @@ public class welcome extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
 
         add.setMinimumSize(new java.awt.Dimension(400, 320));
 
@@ -98,14 +101,26 @@ public class welcome extends javax.swing.JFrame {
 
         pc.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter()));
 
-        jButton3.setText("ADD");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        adbtn.setText("ADD");
+        adbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                adbtnActionPerformed(evt);
             }
         });
 
         jButton4.setText("CANCEL");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
+        svbtn.setText("SAVE");
+        svbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                svbtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -115,8 +130,10 @@ public class welcome extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 180, Short.MAX_VALUE)
+                        .addComponent(adbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(svbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 93, Short.MAX_VALUE)
                         .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(40, 40, 40))
                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -128,7 +145,10 @@ public class welcome extends javax.swing.JFrame {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(pdnm)
                             .addComponent(qt)
-                            .addComponent(pc))))
+                            .addComponent(pc)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(prdid, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -146,10 +166,13 @@ public class welcome extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
                     .addComponent(pc))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(prdid)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(adbtn, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
+                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(svbtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(48, 48, 48))
         );
 
@@ -173,10 +196,7 @@ public class welcome extends javax.swing.JFrame {
 
         prodtables.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 "ID", "PRODUCT NAME", "QUANTITY", "PRICE"
@@ -200,6 +220,13 @@ public class welcome extends javax.swing.JFrame {
             }
         });
 
+        jButton6.setText("Edit");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -210,7 +237,9 @@ public class welcome extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -223,7 +252,8 @@ public class welcome extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
                     .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 342, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26))
@@ -252,10 +282,10 @@ public class welcome extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-this.setVisible(false);add.setVisible(true);add.setLocationRelativeTo(null);        // TODO add your handling code here:
+this.setVisible(false);add.setVisible(true);add.setLocationRelativeTo(null);svbtn.setVisible(false);adbtn.setVisible(true);        // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void adbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adbtnActionPerformed
 product_add_class pdc = new product_add_class();
 String prod = pdnm.getText();
 int qty = Integer.parseInt(qt.getValue().toString());
@@ -267,11 +297,10 @@ if(marie==1){
     JOptionPane.showMessageDialog(rootPane, "PRODUCT ADDED");
 }else{
     
-}
 
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
-
+    }//GEN-LAST:event_adbtnActionPerformed
+    }
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
      int selRow = prodtables.getSelectedRow();
         if (selRow== -1){
@@ -314,6 +343,65 @@ if(marie==1){
                 
     }//GEN-LAST:event_jButton5ActionPerformed
 
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+int row = prodtables.getSelectedRow();
+if(row==-1){
+    JOptionPane.showMessageDialog(prodtables, "PLEASE SELECT DATA FROM TABLE","ERROR",JOptionPane.ERROR_MESSAGE);
+}else{
+    int jo=JOptionPane.showConfirmDialog(prodtables, "ARE YOU SURE YOU WANT TO EDIT THIS DATA?","CONFRIMATION",JOptionPane.YES_NO_OPTION);
+    if(jo==JOptionPane.YES_OPTION){
+        String id = prodtables.getValueAt(row, 0).toString();
+        String prdname = prodtables.getValueAt(row, 1).toString();
+        String prdqty = prodtables.getValueAt(row, 2).toString();
+        String prdprice = prodtables.getValueAt(row, 3).toString();
+        prdid.setText(id);
+        pdnm.setText(prdname);
+        pc.setText(prdprice);
+        this.setVisible(false);
+        add.setVisible(true);
+        add.setLocationRelativeTo(null);
+    }
+}adbtn.setVisible(false);svbtn.setVisible(true);qt.setEnabled(false);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+add.setVisible(false);
+    welcome wlm = new welcome();
+    wlm.setVisible(true);
+    wlm.setLocationRelativeTo(null);        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void svbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_svbtnActionPerformed
+int id = Integer.parseInt(prdid.getText());
+String prdname = pdnm.getText();
+String prdprice = pc.getText();
+try{
+    String sql = "update products set PRODUCT_NAME=?, PRICE=? where ID=?;";
+    Class.forName("com.mysql.jdbc.Driver");
+    Connection con = (Connection)DriverManager.getConnection("jdbc:mysql://localhost/registration_form?", "root", "");
+    PreparedStatement pstmt = con.prepareStatement(sql);
+    pstmt.setString(1, prdname);
+    pstmt.setString(2, prdprice);
+    pstmt.setInt(3, id);
+    if(pdnm.getText().equals("") || pc.getText().equals("")){
+        JOptionPane.showMessageDialog(add, "PLEASE FILL UP ALL FIELDS");
+    }else{
+        pstmt.executeUpdate();
+        pdnm.setText("");
+        pc.setText("");
+        add.setVisible(false);
+        welcome wlm = new welcome();
+        wlm.setVisible(true);
+    }
+}       catch (ClassNotFoundException ex) {
+            Logger.getLogger(welcome.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(welcome.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_svbtnActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -350,12 +438,13 @@ if(marie==1){
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton adbtn;
     private javax.swing.JFrame add;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -364,8 +453,10 @@ if(marie==1){
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JFormattedTextField pc;
     private javax.swing.JTextField pdnm;
+    private javax.swing.JLabel prdid;
     private javax.swing.JTable prodtables;
     private javax.swing.JSpinner qt;
+    private javax.swing.JButton svbtn;
     private javax.swing.JLabel txt;
     // End of variables declaration//GEN-END:variables
 }
