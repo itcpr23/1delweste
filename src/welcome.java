@@ -27,6 +27,29 @@ public class welcome extends javax.swing.JFrame {
     public welcome() {
         initComponents();
         showList();
+    }public void search(){
+        String prdname = srchfields.getText();
+        try{
+            String sql = "select * from products where PRODUCT_NAME like ?;";
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection con = (Connection)DriverManager.getConnection("jdbc:mysql://localhost/registration_form?", "root", "");
+            PreparedStatement pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, "%"+prdname+"%");
+            ResultSet rs = pstmt.executeQuery();
+            DefaultTableModel mdtbl = (DefaultTableModel)prodtables.getModel();
+            mdtbl.setRowCount(0);
+            if(!rs.isBeforeFirst()){
+                mdtbl.addRow(new Object[]{"NO DATA", "NO DATA", "NO DATA", "NO DATA"});
+            }else{
+                while(rs.next()){
+                    mdtbl.addRow(new Object[]{rs.getInt("ID"),rs.getString("PRODUCT_NAME"),rs.getInt("QUANTITY"),rs.getString("PRICE")});
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(welcome.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(welcome.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     public void showList(){
         String sql ="SELECT * from products;";
@@ -80,6 +103,8 @@ public class welcome extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        srchfields = new javax.swing.JTextField();
 
         add.setMinimumSize(new java.awt.Dimension(400, 320));
 
@@ -227,6 +252,16 @@ public class welcome extends javax.swing.JFrame {
             }
         });
 
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("PRODUCT NAME:");
+
+        srchfields.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                srchfieldsKeyReleased(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -242,8 +277,12 @@ public class welcome extends javax.swing.JFrame {
                         .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(25, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(srchfields)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -254,8 +293,12 @@ public class welcome extends javax.swing.JFrame {
                     .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 342, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(srchfields, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26))
         );
 
@@ -393,6 +436,7 @@ try{
         add.setVisible(false);
         welcome wlm = new welcome();
         wlm.setVisible(true);
+        wlm.setLocationRelativeTo(null);
     }
 }       catch (ClassNotFoundException ex) {
             Logger.getLogger(welcome.class.getName()).log(Level.SEVERE, null, ex);
@@ -401,6 +445,10 @@ try{
         }
         // TODO add your handling code here:
     }//GEN-LAST:event_svbtnActionPerformed
+
+    private void srchfieldsKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_srchfieldsKeyReleased
+search();        // TODO add your handling code here:
+    }//GEN-LAST:event_srchfieldsKeyReleased
 
     /**
      * @param args the command line arguments
@@ -448,6 +496,7 @@ try{
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
@@ -456,6 +505,7 @@ try{
     private javax.swing.JLabel prdid;
     private javax.swing.JTable prodtables;
     private javax.swing.JSpinner qt;
+    private javax.swing.JTextField srchfields;
     private javax.swing.JButton svbtn;
     private javax.swing.JLabel txt;
     // End of variables declaration//GEN-END:variables
