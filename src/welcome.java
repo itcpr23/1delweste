@@ -31,11 +31,12 @@ product_add_class pdc = new product_add_class();
     }public void search(){
         String prdname = srchfields.getText();
         try{
-            String sql = "select * from products where PRODUCT_NAME like ?;";
+            String sql = "select * from products where PRODUCT_NAME like ? or ID like ?;";
             Class.forName("com.mysql.jdbc.Driver");
             Connection con = (Connection)DriverManager.getConnection("jdbc:mysql://localhost/registration_form?", "root", "");
             PreparedStatement pstmt = con.prepareStatement(sql);
             pstmt.setString(1, "%"+prdname+"%");
+            pstmt.setString(2, "%"+prdname+"%");
             ResultSet rs = pstmt.executeQuery();
             DefaultTableModel mdtbl = (DefaultTableModel)prodtables.getModel();
             mdtbl.setRowCount(0);
